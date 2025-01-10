@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Search</title>
+    <<!--suppress HtmlUnknownTarget -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Flight Finder</h1>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="form-container">
+            <h2>Search Flights</h2>
+            <form action="/search" method="POST">
+                <label for="departure_airport">Departure Airport (Code):</label>
+                <input type="text" id="departure_airport" name="departure_airport" required>
+
+                <label for="arrival_airport">Arrival Airport (Code):</label>
+                <input type="text" id="arrival_airport" name="arrival_airport" required>
+
+                <label for="date">Travel Date (DD-MM-YYYY):</label>
+                <input type="text" id="date" name="date" required>
+
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

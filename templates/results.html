@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyniki wyszukiwania</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Wyniki wyszukiwania lotów</h1>
+
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>Linia lotnicza</th>
+                    <th>Numer rejsu</th>
+                    <th>Lotnisko wylotu</th>
+                    <th>Lotnisko przylotu</th>
+                    <th>Godzina wylotu</th>
+                    <th>Godzina przylotu</th>
+                    <th>Czas lotu</th>
+                    <th>Ważny od</th>
+                    <th>Ważny do</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flight in flights %}
+                <tr>
+                    <td>{{ flight.airline }}</td>
+                    <td>{{ flight.flight_number }}</td>
+                    <td>{{ flight.departure_airport }}</td>
+                    <td>{{ flight.arrival_airport }}</td>
+                    <td>{{ flight.departure_time }}</td>
+                    <td>{{ flight.arrival_time }}</td>
+                    <td>{{ flight.flight_duration }}</td>
+                    <td>{{ flight.valid_from }}</td>
+                    <td>{{ flight.valid_until }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
