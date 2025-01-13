@@ -1,0 +1,50 @@
+/* Globalne ustawienia */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Kontener główny */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 20px;
+}
+
+/* Kafelek */
+.tile {
+    width: 80%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.tile h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Efekt przy najechaniu */
+.tile:hover {
+    background-color: #45a049;
+    transform: translateY(-5px);
+}
+
+/* Responsywność */
+@media (max-width: 600px) {
+    .tile {
+        width: 90%;
+    }
+}

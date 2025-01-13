@@ -1,0 +1,43 @@
+1. Rozmieszczenie komponentów
+   
+   System działa w architekturze klient-serwer, gdzie wszystkie jego składniki współpracują w oparciu o chmurowe zasoby, co zapewnia skalowalność oraz łatwość w zarządzaniu. Składa się z następujących komponentów:
+   
+   - Serwer aplikacyjny (backend): Jest odpowiedzialny za obsługę logiki biznesowej systemu. Serwer przyjmuje zapytania użytkowników, obsługuje logowanie, autoryzację, zarządzanie bazą danych, a także przetwarza dane związane z wyszukiwaniem lotów. Dodatkowo, serwer zarządza bezpieczeństwem połączeń z bazą danych oraz powiadomieniami użytkowników o statusie lotów. 
+   
+   - Baza danych (SQLite): Przechowuje wszystkie dane dotyczące lotów, linii lotniczych, lotnisk, godzin lotów oraz użytkowników (w tym dane logowania). Baza danych jest dostępna dla serwera aplikacyjnego, który wykorzystuje ją do filtrowania wyników wyszukiwania lotów i zarządzania danymi o lotach w panelu administratora.
+   
+   - Interfejs użytkownika (frontend): Aplikacja webowa, która działa w przeglądarkach internetowych, umożliwia użytkownikom wyszukiwanie lotów na podstawie parametrów (lotnisko wylotu, lotnisko przylotu, data) oraz interakcję z systemem (wyświetlanie wyników, wyświetlanie statusów połączeń, itp.). Interfejs jest zbudowany z użyciem HTML, CSS oraz frameworka Bootstrap, co zapewnia responsywność oraz estetyczny wygląd.
+   
+   - Panel administracyjny: Jest to część systemu przeznaczona do zarządzania bazą danych lotów. Administrator może dodawać, usuwać i edytować loty w systemie. Dostęp do panelu jest chroniony hasłem, co zapewnia bezpieczeństwo operacji administracyjnych.
+   
+   - Usługa obliczania odległości (OpenCage API): Usługa zewnętrzna, która umożliwia obliczanie odległości i czasu lotu na podstawie współrzędnych geograficznych lotnisk. System wykorzystuje API OpenCage Geocoding do pozyskiwania współrzędnych geograficznych lotnisk oraz obliczania szacunkowego czasu trwania lotu za pomocą wzoru Haversine.
+
+2. Komunikacja między komponentami
+   
+   - Frontend komunikuje się z serwerem aplikacyjnym za pomocą protokołu HTTPS. Przesyła zapytania dotyczące wyszukiwania lotów, danych administratora, oraz logowania użytkowników.
+   
+   - Serwer aplikacyjny łączy się z bazą danych za pomocą bezpiecznego połączenia. Wszystkie zapytania o dane lotów, w tym dodawanie i usuwanie połączeń, są przesyłane i odbierane przez serwer, który następnie przetwarza wyniki i przesyła je do frontendu.
+   
+   - Usługa OpenCage API jest wykorzystywana do obliczania odległości między lotniskami na podstawie ich współrzędnych geograficznych. Serwer aplikacyjny przesyła zapytania do API, a następnie wykorzystuje otrzymane dane do obliczenia czasu trwania lotu.
+   
+   - W systemie zastosowano flash messages w frameworku Flask, które są używane do informowania użytkowników o zakończeniu operacji (np. dodanie lub usunięcie lotu).
+
+3. Bezpieczeństwo
+   
+   - Wszystkie połączenia między komponentami systemu są zabezpieczone przy pomocy protokołu HTTPS, co zapewnia szyfrowanie danych przesyłanych między użytkownikami a serwerem.
+   
+   - Panel administratora jest dostępny tylko po wprowadzeniu hasła, które jest przechowywane w systemie w sposób bezpieczny. Zabezpieczenie to zapewnia, że tylko upoważnieni użytkownicy mogą zarządzać danymi o lotach.
+   
+   - Do ochrony sesji użytkowników oraz administratorów system wykorzystuje tokeny JWT (JSON Web Tokens), które zapewniają bezpieczny dostęp i autentykację.
+
+4. Środowisko wdrożeniowe
+   
+   - Serwer aplikacyjny i baza danych są hostowane w chmurze, np. na platformie AWS, Azure lub Google Cloud. Tego typu środowisko zapewnia automatyczne skalowanie systemu w zależności od obciążenia, co sprawia, że system może obsługiwać dużą liczbę zapytań i użytkowników bez problemów z wydajnością.
+   
+   - Usługi chmurowe umożliwiają automatyczne tworzenie kopii zapasowych bazy danych oraz zapewniają redundancję, co chroni dane przed utratą w przypadku awarii.
+   
+   - System jest zaprojektowany z myślą o rozwoju, co oznacza, że w przyszłości będzie można łatwo dodawać nowe funkcjonalności, takie jak integracje z innymi zewnętrznymi usługami API, ulepszony interfejs użytkownika lub rozszerzenie bazy danych o dodatkowe informacje.
+
+Podsumowanie
+
+"System Wyszukiwania Lotów" został zaprojektowany z myślą o prostocie i wydajności. Dzięki zastosowaniu chmurowej architektury oraz nowoczesnych technologii takich jak Flask, SQLite, OpenCage API, oraz bezpiecznych protokołów, system jest zarówno bezpieczny, jak i skalowalny. Interfejs użytkownika jest przyjazny i responsywny, co zapewnia wygodne wyszukiwanie lotów oraz łatwe zarządzanie danymi przez administratorów.
