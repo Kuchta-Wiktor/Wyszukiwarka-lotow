@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strefa Admina</title>
+    <!--suppress HtmlUnknownTarget -->
     <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
 </head>
 <body>
@@ -22,44 +23,44 @@
         <div>
             <h3>Dodaj nowy lot</h3>
             <form method="POST" action="/admin/add_flight">
-                <label for="airline">Linia lotnicza:</label>
-                <input type="text" name="airline" required><br><br>
+                <label for="airline">Linia lotnicza:
+                <input type="text" name="airline" required></label>
 
-                <label for="flight_number">Numer lotu:</label>
-                <input type="text" name="flight_number" required><br><br>
+                <label for="flight_number">Numer lotu:
+                <input type="text" name="flight_number" required></label>
 
-                <label for="departure_airport">Lotnisko wylotu:</label>
-                <input type="text" name="departure_airport" required><br><br>
+                <label for="departure_airport">Lotnisko wylotu:
+                <input type="text" name="departure_airport" required></label>
 
-                <label for="arrival_airport">Lotnisko przylotu:</label>
-                <input type="text" name="arrival_airport" required><br><br>
+                <label for="arrival_airport">Lotnisko przylotu:
+                <input type="text" name="arrival_airport" required></label>
 
-                <label for="departure_day">Dzień odlotu (1 - poniedziałek, 7 - niedziela):</label>
-                <input type="number" name="departure_day" required><br><br>
+                <label for="departure_day">Dzień odlotu (1 - poniedziałek, 7 - niedziela):
+                <input type="number" id="departure_day" name="departure_day" required></label>
 
-                <label for="departure_time">Godzina odlotu:</label>
-                <input type="time" name="departure_time" required><br><br>
+                <label for="departure_time">Godzina odlotu:
+                <input type="time" name="departure_time" required></label>
 
-                <label for="valid_from">Aktywny od:</label>
-                <input type="datetime" name="valid_from" required><br><br>
+                <label for="valid_from">Aktywny od:
+                <input type="date" name="valid_from" required></label>
 
-			    <label for="valid_until">Aktywny do:</label>
-                <input type="datetime" name="valid_until" required><br><br>
+			    <label for="valid_until">Aktywny do:
+                <input type="date" name="valid_until" required></label>
 
                 <input type="submit" value="Dodaj lot">
             </form>
 
             <h3>Usuń lot</h3>
             <form method="POST" action="/admin/remove_flight">
-                <label for="flight_number">Numer lotu do usunięcia:</label>
-                <input type="text" name="flight_number" required><br><br>
+                <label for="flight_number">Numer lotu do usunięcia:
+                <input type="text" name="flight_number" required></label>
                 <input type="submit" value="Usuń lot">
             </form>
         </div>
         {% else %}
         <form method="POST" action="/admin">
-            <label for="password">Podaj hasło:</label>
-            <input type="password" name="password" required><br><br>
+            <label for="password">Podaj hasło:
+            <input type="password" name="password" required></label>
             <input type="submit" value="Zaloguj się">
         </form>
         {% endif %}
