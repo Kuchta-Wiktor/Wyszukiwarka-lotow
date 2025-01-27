@@ -52,9 +52,3 @@ Aplikacja umożliwia użytkownikom wyszukiwanie i zarządzanie lotami między r�
 1. Aby uzyskać dostęp do panelu administratora, należy zalogować się za pomocą hasła.
 2. Domyślne hasło to `qwerty`.
 3. Po zalogowaniu można dodać nowe loty lub usunąć istniejące.
-
-## Instalacja
-
-1. Sklonuj repozytorium:
-   ```bash
-   git clone https://github.com/your-username/flight-management-app.git
